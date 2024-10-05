@@ -18,14 +18,13 @@ const Home = () => {
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
-          headerLeft: () =>(
-            <ScreenHeaderBtn iconUrl = {icons.menu} dimention = "60%" />
+          headerLeft: () => (
+            <ScreenHeaderBtn iconUrl={icons.menu} dimention="60%" />
           ),
-          headerRight: () =>(
-            <ScreenHeaderBtn iconUrl = {icons.menu} dimention = "60%" />
+          headerRight: () => (
+            <ScreenHeaderBtn iconUrl={icons.menu} dimention="60%" />
           ),
-          headerTitle: ""
-
+          headerTitle: "",
         }}
       />
     </SafeAreaView>
