@@ -18,7 +18,7 @@ const Popularjobs = () => {
   const isLoading = false;
   const error = false;
 
-  const jobs = []; // Dummy job data (replace with your data)
+  const jobs = [1,2,3,4]; // Dummy job data (replace with your data)
 
   return (
     <View style={styles.container}>
@@ -37,12 +37,13 @@ const Popularjobs = () => {
           <FlatList
             data={jobs} // replace with your job data
             renderItem={({ item }) => (
-              <PopularJobCard job={item} /> // Your custom job card component
+              <PopularJobCard item={item} /> // Your custom job card component
             )}
-            keyExtractor={(item) => item.id} 
-            horizontal 
+            keyExtractor={item => item?.job_id} 
+            horizontal
+            contentContainerStyle={{columnGap: SIZES.medium}}
             showsHorizontalScrollIndicator={false}
-            scrollEnabled={false} 
+            scrollEnabled={true} 
           />
         )}
       </View>
