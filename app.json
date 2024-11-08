@@ -8,6 +8,23 @@
       "expo-router"
     ],
     "name": "jobs-finding-application",
-    "slug": "jobs-finding-application"
+    "slug": "jobs-finding-application",
+    "extra": {
+      "eas": {
+        "projectId": "d8719129-7429-401a-adf7-097ff440cb7a"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d8719129-7429-401a-adf7-097ff440cb7a"
+    },
+    "android": {
+      "package": "com.farheenirfan.jobify"
+    },
+    "ios": {
+      "bundleIdentifier": "com.farheenirfan.jobify"
+    }
   }
 }
