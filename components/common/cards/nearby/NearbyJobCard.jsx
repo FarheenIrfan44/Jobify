@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 
 import styles from "./nearbyjobcard.style";
 import { checkImageURL } from "../../../../utils";
+import { data } from "../../../../data/data";
 
 const NearbyJobCard = ({ job, handleNavigate }) => {
   return (
@@ -23,10 +24,11 @@ const NearbyJobCard = ({ job, handleNavigate }) => {
           {job?.job_title}
         </Text>
 
-        <Text style={styles.jobType}>{job?.job_employment_type}</Text>
+        <Text style={styles.jobType}>{job?.employer_name}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
 export default NearbyJobCard;
+//{job?.job_title}
