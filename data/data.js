@@ -285,7 +285,7 @@ const data = [
     job_id: 2,
     employer_name: "Accenture",
     employer_logo:
-      "https://www.accenture.com/t20181214T024750Z__w__/us-en/_acnmedia/Redesign-Assets/DotCom/Logos/Acc_Logo_Black_Purple_RGB.png",
+      "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
     employer_website: "http://www.accenture.com",
     employer_company_type: "Consulting",
     job_publisher: "Accenture Careers",
