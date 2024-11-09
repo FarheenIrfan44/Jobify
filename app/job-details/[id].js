@@ -20,6 +20,7 @@ import {
 } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
+import { data } from "../../data/data.js";
 
 const tabs = ["About", "Qualifications", "Responsibilities"];
 
@@ -27,10 +28,6 @@ const JobDetails = () => {
   const route = useRoute(); // Get route object
   const { id } = route.params; // Extract 'id' from route params
   const router = useRouter();
-
-  const { data, isLoading, error, refetch } = useFetch("job-details", {
-    job_id: id, // Use 'id' from route params
-  });
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [refreshing, setRefreshing] = useState(false);
@@ -97,11 +94,7 @@ const JobDetails = () => {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         >
-          {isLoading ? (
-            <ActivityIndicator size="large" color={COLORS.primary} />
-          ) : error ? (
-            <Text>Something went wrong</Text>
-          ) : data.length === 0 ? (
+          {data.length === 0 ? (
             <Text>No data available</Text>
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
@@ -124,8 +117,8 @@ const JobDetails = () => {
         </ScrollView>
         <JobFooter
           url={
-            data[0]?.apply_options?.[0]?.apply_link  ??
-            "https://careers.google.com/jobs/results/"
+            data[0]?.job_apply_link ??
+            "https://www.google.com/search?q=linkedin+jobs&oq=linkedin+jobs&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORixAxjJAxiABDIKCAEQABiSAxiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCTEyMDA1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&jbr=sep:0"
           }
         />
       </>
