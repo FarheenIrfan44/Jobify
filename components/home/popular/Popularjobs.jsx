@@ -12,10 +12,11 @@ import styles from "./popularjobs.style";
 import { COLORS, SIZES } from "../../../constants";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import useFetch from "../../../hook/useFetch";
+import { data } from "../../../data/data.js";
 
 const Popularjobs = () => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch("search", {
+  const { data1, isLoading, error } = useFetch("search", {
     query: "React developer",
     num_pages: "1",
   });
@@ -37,11 +38,7 @@ const Popularjobs = () => {
       </View>
 
       <View style={styles.cardsContainer}>
-        {isLoading ? (
-          <ActivityIndicator size='large' color={COLORS.primary} />
-        ) : error ? (
-          <Text>Something went wrong</Text>
-        ) : (
+        {
           <FlatList
             data={data}
             renderItem={({ item }) => (
@@ -56,7 +53,7 @@ const Popularjobs = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
           />
-        )}
+        }
       </View>
     </View>
   );
