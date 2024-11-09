@@ -21,6 +21,7 @@ import {
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
 import { data } from "../../data/data.js";
+import { useEffect } from "react";
 
 const tabs = ["About", "Qualifications", "Responsibilities"];
 
@@ -31,6 +32,28 @@ const JobDetails = () => {
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [refreshing, setRefreshing] = useState(false);
+  const [error, setError] = useState(false);
+  const [selectedData, setSelectedData] = useState([]);
+
+  const fetchJobDetails = () => {
+    try {
+      // Find job by job_id in the static data list
+      const result = data.find((job) => job.job_id === id);
+      if (result) {
+        setSelectedData([result]);
+        setError(null);
+      } else {
+        throw new Error("Job not found");
+      }
+    } catch (err) {
+      setError("Failed to load job details");
+      setSelectedData(null);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobDetails();
+  }, [id]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -44,20 +67,24 @@ const JobDetails = () => {
         return (
           <Specifics
             title="Qualifications"
-            points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+            points={selectedData[0].job_highlights?.Qualifications ?? ["N/A"]}
           />
         );
 
       case "About":
         return (
-          <JobAbout info={data[0].job_description ?? "No data provided"} />
+          <JobAbout
+            info={
+              selectedData[0].job_description ?? "No selectedData[0] provided"
+            }
+          />
         );
 
       case "Responsibilities":
         return (
           <Specifics
             title="Responsibilities"
-            points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+            points={selectedData[0].job_highlights?.Responsibilities ?? ["N/A"]}
           />
         );
 
@@ -76,7 +103,7 @@ const JobDetails = () => {
           headerLeft: () => (
             <ScreenHeaderBtn
               iconUrl={icons.left}
-              dimension="60%"
+              dimension="100%"
               handlePress={() => router.back()}
             />
           ),
@@ -94,15 +121,15 @@ const JobDetails = () => {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         >
-          {data.length === 0 ? (
-            <Text>No data available</Text>
+          {selectedData.length === 0 ? (
+            <Text>No selectedData available</Text>
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Company
-                companyLogo={data[0].employer_logo}
-                jobTitle={data[0].job_title}
-                companyName={data[0].employer_name}
-                location={data[0].job_country}
+                companyLogo={selectedData[0].employer_logo}
+                jobTitle={selectedData[0].job_title}
+                companyName={selectedData[0].employer_name}
+                location={selectedData[0].job_country}
               />
 
               <JobTabs
@@ -117,7 +144,7 @@ const JobDetails = () => {
         </ScrollView>
         <JobFooter
           url={
-            data[0]?.job_apply_link ??
+            selectedData[0]?.job_apply_link ??
             "https://www.google.com/search?q=linkedin+jobs&oq=linkedin+jobs&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORixAxjJAxiABDIKCAEQABiSAxiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCTEyMDA1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&jbr=sep:0"
           }
         />
