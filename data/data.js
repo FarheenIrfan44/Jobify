@@ -285,7 +285,7 @@ const data = [
     job_id: 2,
     employer_name: "Accenture",
     employer_logo:
-      "https://www.accenture.com/t20181214T024750Z__w__/us-en/_acnmedia/Accenture/Redesign-Assets/DotCom/Logos/Acc_Logo_Black_Purple_RGB.png",
+      "https://www.accenture.com/t20181214T024750Z__w__/us-en/_acnmedia/Redesign-Assets/DotCom/Logos/Acc_Logo_Black_Purple_RGB.png",
     employer_website: "http://www.accenture.com",
     employer_company_type: "Consulting",
     job_publisher: "Accenture Careers",
@@ -382,6 +382,7 @@ const data = [
     job_publisher: "Microsoft Careers",
     job_employment_type: "CONTRACT",
     job_title: "Azure DevOps Engineer",
+    job_id: "iXki4pXSSRwAAAAAAAAAAA=7",
     job_apply_link:
       "https://careers.microsoft.com/us/en/job/MSFT56789/Azure-DevOps-Engineer",
     job_apply_is_direct: true,
@@ -430,6 +431,7 @@ const data = [
     job_publisher: "IBM Careers",
     job_employment_type: "FULLTIME",
     job_title: "Machine Learning Engineer",
+    job_id: "iXki4pXSSRwAAAAAAAAAAA=6",
     job_apply_link:
       "https://careers.ibm.com/job/IBML67890/Machine-Learning-Engineer",
     job_apply_is_direct: true,
@@ -472,6 +474,7 @@ const data = [
     job_publisher: "Google Careers",
     job_employment_type: "FULLTIME",
     job_title: "Frontend Engineer",
+    job_id: "iXki4pXSSRwAAAAAAAAAAA=5",
     job_apply_link:
       "https://careers.google.com/jobs/results/12345-Frontend-Engineer",
     job_apply_is_direct: true,

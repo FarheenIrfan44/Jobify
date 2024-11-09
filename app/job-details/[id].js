@@ -103,7 +103,7 @@ const JobDetails = () => {
           headerLeft: () => (
             <ScreenHeaderBtn
               iconUrl={icons.left}
-              dimension="100%"
+              dimension="60%"
               handlePress={() => router.back()}
             />
           ),
